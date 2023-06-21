@@ -1,5 +1,4 @@
 const { Request, Response } = require('express')
-const { startsWithCommand } = require('../../config.json')
 const { isBlank } = require('../../util/commonUtil.js')
 
 /**
@@ -22,16 +21,9 @@ const run = async (req, res) => {
         })
     }
 
-    if (!command.startsWith(startsWithCommand)) {
-        return res.status(400).send({
-            message: `command 값은 ${startsWithCommand} 으로 시작되어야 합니다.`
-        })
-    }
-
     res.send({
-        code: 0,
-        message: "success",
-        result: "",
+        code: 404,
+        message: "해당하는 명령어가 없습니다."
     })
 }
 
