@@ -20,7 +20,8 @@ const helpMessage = () => {
 
 module.exports = {
     commandList: {
-        help: "명령어",
+        help: ["명령어"],
+        normalGacha: ["일반뽑기", "뽑"]
     },
     helpMessage: helpMessage(),
 }

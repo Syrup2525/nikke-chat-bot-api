@@ -45,11 +45,6 @@ module.exports = () => {
         customCssUrl: customCssUrl,
     }))
 
-    /* Client */
-    const check = require('./middleware/check.js')
-
-    // 버전체크 (강제 업데이트)
-    app.use('/', check.header)
     app.use('/', (req, res, next) => {
         res.requestCode = uuidv4()
 
@@ -70,6 +65,12 @@ module.exports = () => {
 
         next()
     })
+
+    /* Client */
+    const check = require('./middleware/check.js')
+
+    // 버전체크 (강제 업데이트)
+    app.use('/', check.header)
 
     app.use('/', (req, res, next) => {
         let send = res.send
