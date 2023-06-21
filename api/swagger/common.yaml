@@ -1,0 +1,57 @@
+Headers:
+  - in: header
+    name: OsVersion
+    description: OS 버전
+    schema:
+      type: string
+    example: "13.0"
+    required: true
+  - in: header
+    name: AppVersion
+    description: 앱 버전
+    schema:
+      type: string
+      example: "0.0.1"
+    required: true
+  - in: header
+    name: DeviceName
+    description: 디바이스 이름
+    schema:
+      type: string
+      example: "iPhone14,2"
+    required: true
+
+ResponseStatus200:
+  description: 정상 요청
+  content: 
+    application/json:
+      schema:
+        $ref: './openapi.yaml#/components/schemas/Response'
+
+ResponseStatus400:
+  description: 유효하지 않은 요청
+  content: 
+    application/json:
+      schema:
+        $ref: './openapi.yaml#/components/schemas/Response'
+
+ResponseStatus401:
+  description: 토큰 인증 오류
+  content: 
+    application/json:
+      schema:
+        $ref: './openapi.yaml#/components/schemas/Response'
+
+ResponseStatus404:
+  description: 결과 없음
+  content: 
+    application/json:
+      schema:
+        $ref: './openapi.yaml#/components/schemas/Response'
+
+ResponseStatus500:
+  description: 서버 내부 오류
+  content: 
+    application/json:
+      schema:
+        $ref: './openapi.yaml#/components/schemas/Response'

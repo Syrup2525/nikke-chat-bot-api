@@ -1,0 +1,24 @@
+{
+  "name": "nikke-chat-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-swagger": "node buildSwagger.js",
+    "api-docs": "swagger-cli bundle -r ./api/swagger/openapi.yaml -o build/swagger.yaml -t yaml",
+    "predev": "npm run api-docs\n npm run build-swagger"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-basic-auth": "^1.2.1",
+    "swagger-cli": "^4.0.4",
+    "swagger-ui-express": "^4.6.3",
+    "uuid": "^9.0.0",
+    "winston": "^3.9.0",
+    "winston-daily-rotate-file": "^4.7.1",
+    "yamljs": "^0.3.0"
+  }
+}

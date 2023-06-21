@@ -1,0 +1,35 @@
+openapi: '3.0.3'
+info:
+  version: 0.0.1
+  title: Chat Bot API docs
+  description: "
+  <h3>공용 Return 정의 <i><u>[] 표시는 옵션사항</u></i></h3>
+  <b>Http Status</b><br>
+  - 200: code, message, [result]<br>
+  - 400: message<br>
+  - 401: message<br>
+  - 404: message<br>
+  - 500: code, message"
+servers:
+  - url: ${SERVER_URL}
+paths:
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Response:
+      $ref: './response/response.yaml#/Response'
+  responses:
+    status200:
+      $ref: './common.yaml#/ResponseStatus200'
+    status400:
+      $ref: './common.yaml#/ResponseStatus400'
+    status401:
+      $ref: './common.yaml#/ResponseStatus401'
+    status404:
+      $ref: './common.yaml#/ResponseStatus404'
+    status500:
+      $ref: './common.yaml#/ResponseStatus500'
