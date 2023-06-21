@@ -10,7 +10,12 @@
     parameters:
       $ref: '../common.yaml#/Headers'
     requestBody:
-      description: "클라이언트에서 유효성 검사 완료 후 호출"
+      description: "<h3>code 구분</h3>
+                    <ul>
+                      <li>0: 성공</li>
+                      <li>404: 해당하는 명령어 미존재</li> 
+                    </ul>
+                  "
       content:
         'application/json':
           schema:

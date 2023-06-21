@@ -12,8 +12,7 @@ config.json
 {
     "swaggerUsers": "<Swagger 접속 아이디> : <Swagger 접속 비밀번호>",
     "customCssUrl": "<Swagger 테마 CSS URL>",
-    "apiKey": "API 인증 키 (고정)",
-    "startsWithCommand": "<시작 커맨드>",
+    "apiKey": "API 인증 키 (고정)"
 }
 ```
 

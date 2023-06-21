@@ -4,6 +4,13 @@ Response:
     code:
       type: integer
       example: 0
+      required: true
+      
     message:
       type: string
       example: "success"
+      required: true
+    
+    result:
+      type: string
+      example: "명령어 결과"
