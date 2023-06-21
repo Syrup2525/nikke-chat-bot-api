@@ -66,10 +66,8 @@ const logger = createLogger({
     ],
 })
 
-if (process.env.BUILD_MODE !== 'RELEASE') {
-    logger.add(new transports.Console({
-        level: process.env.LOG_LEVEL
-    }))
-}
+logger.add(new transports.Console({
+    level: process.env.LOG_LEVEL
+}))
 
 module.exports = logger

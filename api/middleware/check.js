@@ -2,6 +2,8 @@ const { Request, Response } = require('express')
 const { isBlank } = require('../../util/commonUtil.js')
 const { apiKey } = require('../../config.json')
 
+require('dotenv').config()
+
 /**
  *  Header 토큰 인증 체크
  * @param {Request} req 
@@ -9,7 +11,11 @@ const { apiKey } = require('../../config.json')
  * @param {*} next 
  * @returns 
  */
-const authCheck = async (req, res, next) => {
+const header = async (req, res, next) => {
+    if (process.env.BUILD_MODE == "DEBUG") {
+        return next()
+    }
+
     let authKey = req.header('Authorization')
 
     // authKey 값이 비어있지 않다면
@@ -37,4 +43,8 @@ const authCheck = async (req, res, next) => {
     }
 
     next()
+}
+
+module.exports = {
+    header,
 }

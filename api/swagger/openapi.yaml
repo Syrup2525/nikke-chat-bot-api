@@ -13,7 +13,8 @@ info:
 servers:
   - url: ${SERVER_URL}
 paths:
-
+  /command:
+    $ref: './paths/command.yaml#/~1command'
 components:
   securitySchemes:
     BearerAuth:
@@ -22,6 +23,8 @@ components:
   schemas:
     Response:
       $ref: './response/response.yaml#/Response'
+    RequestCommand:
+      $ref: './requestBody/command.yaml#/RequestCommand'
   responses:
     status200:
       $ref: './common.yaml#/ResponseStatus200'

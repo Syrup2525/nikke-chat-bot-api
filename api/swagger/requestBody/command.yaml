@@ -1,0 +1,7 @@
+RequestCommand:
+  type: object
+  properties:
+    command:
+      type: string
+      description: 명령어
+      example: "!명령어"

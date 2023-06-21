@@ -46,10 +46,10 @@ module.exports = () => {
     }))
 
     /* Client */
-    // const check = require('./middleware/check.js')
+    const check = require('./middleware/check.js')
 
     // 버전체크 (강제 업데이트)
-    // app.use('/', check.header)
+    app.use('/', check.header)
     app.use('/', (req, res, next) => {
         res.requestCode = uuidv4()
 
@@ -57,12 +57,9 @@ module.exports = () => {
             url: req.url,
             method: req.method,
             header: {
-                osType: req.header('OsType'),
                 osVersion: req.header('OsVersion'),
                 appVersion: req.header('AppVersion'),
                 deviceName: req.header('DeviceName'),
-                token: req.header('Authorization'),
-                fcmToken: req.header('FcmToken'),
             },
             query: req.query,
             body: req.body,
@@ -92,6 +89,9 @@ module.exports = () => {
 
         next()
     })
+
+    // API
+    app.use("/command", require('./router/command.js'))
 
     app.all('*', (req, res) => {
         res.status(400).send({

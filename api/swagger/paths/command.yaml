@@ -1,0 +1,29 @@
+/command:
+  post:
+    tags:
+      - command
+    security:
+      - BearerAuth: []
+    summary: 명령어 호출
+    produces:
+      - application/json
+    parameters:
+      $ref: '../common.yaml#/Headers'
+    requestBody:
+      description: "클라이언트에서 유효성 검사 완료 후 호출"
+      content:
+        'application/json':
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/RequestCommand'
+      required: true
+    responses:
+      '200':
+        $ref: '../openapi.yaml#/components/schemas/Response'
+      '400':
+        $ref: '../openapi.yaml#/components/responses/status400'
+      '401':
+        $ref: '../openapi.yaml#/components/responses/status401'
+      '404':
+        $ref: '../openapi.yaml#/components/responses/status404'
+      '500':
+        $ref: '../openapi.yaml#/components/responses/status500'
