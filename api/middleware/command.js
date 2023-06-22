@@ -34,7 +34,7 @@ const run = async (req, res) => {
             message: "success",
             result: helpMessage,
         })
-    } else if (command == "홍련") {
+    } else if (command === "홍련") {
         const isFullCore = commandSplit.length == 2 && commandSplit[1] === "풀코강"
 
         let count = 0
