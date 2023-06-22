@@ -1,15 +1,17 @@
+const { command } = require('./config.json')
+
 const commandList = {
     help: {
         commands: ["명령어"],
     },
     normalGacha: {
         type: "normalGacha",
-        description: "일반 10명 모집 시뮬레이션\n=일반뽑기 (또는 =뽑)",
+        description: `일반 10명 모집 시뮬레이션\n${command}일반뽑기 (또는 ${command}뽑)`,
         commands: ["일반뽑기", "일뽑", "일", "뽑"],
     },
     pickUpGacha: {
         type: "pickUpGacha",
-        description: "픽업 10명 모집 시뮬레이션\n[메어리 : 베이 갓데스] =수어리\n[네온 : 블루 오션] =수네온",
+        description: `픽업 10명 모집 시뮬레이션\n[메어리 : 베이 갓데스] ${command}수어리\n[네온 : 블루 오션] ${command}수네온`,
         list: [
             {
                 commands: ["수어리"],
