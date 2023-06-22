@@ -190,7 +190,7 @@ const getGachaSimpleMessage = (items) => {
     }
 
     let message = ""
-    message += `${items.length.toLocaleString()}회 뽑기 결과에요 \n`
+    message += `${items.length.toLocaleString()}회 뽑기 시뮬레이션 결과에요 \n`
     message += `R: ${r.toLocaleString()}\n`
     message += `SR: ${sr.toLocaleString()}\n`
     message += `SSR: ${ssr.toLocaleString()}\n`
