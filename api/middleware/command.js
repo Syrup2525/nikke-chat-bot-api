@@ -35,6 +35,8 @@ const run = async (req, res) => {
             result: helpMessage,
         })
     } else if (command == "홍련") {
+        const isFullCore = commandSplit.length == 2 && commandSplit[1] === "풀코강"
+
         let count = 0
 
         let r = 0
@@ -72,7 +74,7 @@ const run = async (req, res) => {
             if (item.nikke.name === "홍련") {
                 target += 1
 
-                if (commandSplit.length == 2 && commandSplit[1] === "풀코강") {
+                if (isFullCore) {
                     if (target == 11) {
                         break
                     }
@@ -83,6 +85,13 @@ const run = async (req, res) => {
         }
 
         let message = ""
+
+        if (isFullCore) {
+            message += `지휘관은 홍련이 ${count.toLocaleString()}회 뽑기 만에 나왔네요\n`
+        } else {
+            message += `지휘관은 홍련이 ${count.toLocaleString()}회 뽑기 만에 풀코강에 성공했어요.\n`
+        }
+
         message += `지휘관은 홍련이 ${count.toLocaleString()}회 뽑기 만에 나왔네요\n`
         message += "\n"
         message += `R: ${r.toLocaleString()}\n`
