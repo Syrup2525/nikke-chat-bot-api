@@ -72,8 +72,10 @@ const run = async (req, res) => {
             if (item.nikke.name === "홍련") {
                 target += 1
 
-                if (commandSplit.length == 2 && commandSplit[1] === "풀코강" && target == 11) {
-                    break
+                if (commandSplit.length == 2 && commandSplit[1] === "풀코강") {
+                    if (target == 11) {
+                        break
+                    }
                 } else {
                     break
                 }
