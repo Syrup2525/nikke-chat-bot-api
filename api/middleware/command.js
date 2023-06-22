@@ -10,7 +10,7 @@ const logger = require('../../logger.js')
  * @param {Response} res 
  */
 const run = async (req, res) => {
-    const command = req.body.command
+    let command = req.body.command
 
     if (isBlank(command)) {
         return res.status(400).send({
@@ -26,76 +26,93 @@ const run = async (req, res) => {
 
     const commandSplit = command.split(" ")
 
-    // 명령어 인자가 1개인 경우
-    if (commandSplit.length === 1) {
-        const command = commandSplit[0]
+    command = commandSplit[0]
 
-        if (commandList.help.commands.includes(command)) {
-            return res.send({
-                code: 0,
-                message: "success",
-                result: helpMessage,
-            })
-        } else if (command == "홍련") {
-            let count = 0
+    if (commandList.help.commands.includes(command)) {
+        return res.send({
+            code: 0,
+            message: "success",
+            result: helpMessage,
+        })
+    } else if (command == "홍련") {
+        let count = 0
 
-            let r = 0
-            let sr = 0
-            let ssr = 0
-            let pilgrim = 0
+        let r = 0
+        let sr = 0
+        let ssr = 0
+        let pilgrim = 0
 
-            while (true) {
-                count += 1
+        while (true) {
+            count += 1
 
-                const item = gacha(false)
+            const item = gacha(false)
 
-                switch (item.rarity) {
-                    case "R":
-                        r += 1
-                        break
-
-                    case "SR":
-                        sr += 1
-                        break
-
-                    case "SSR":
-                        ssr += 1
-                        break
-
-                    default:
-                        break
-                }
-
-                if (item.nikke.company === "PILGRIM") {
-                    pilgrim += 1
-                }
-
-                if (item.nikke.name === "홍련") {
+            switch (item.rarity) {
+                case "R":
+                    r += 1
                     break
-                }
+
+                case "SR":
+                    sr += 1
+                    break
+
+                case "SSR":
+                    ssr += 1
+                    break
+
+                default:
+                    break
             }
 
-            let message = ""
-            message += `지휘관은 홍련이 ${count.toLocaleString()} 뽑기 만에 나왔네요\n`
-            message += "\n" 
-            message += `R: ${r.toLocaleString()}\n`
-            message += `SR: ${sr.toLocaleString()}\n`
-            message += `SSR: ${ssr.toLocaleString()}\n`
-            message += `PILGRIM: ${pilgrim.toLocaleString()}`
+            if (item.nikke.company === "PILGRIM") {
+                pilgrim += 1
+            }
 
-            return res.send({
-                code: 0,
-                message: "success",
-                result: message,
-            })
-        } else if (commandList.normalGacha.commands.includes(command)) {
-            return executeGacha(res, false, null)
-        } else {
-            // 픽업 가챠 확인
-            for (const pickUpGacha of commandList.pickUpGacha.list) {
-                if (pickUpGacha.commands.includes(command)) {
-                    return executeGacha(res, true, pickUpGacha.nikke)
-                }
+            if (item.nikke.name === "홍련") {
+                break
+            }
+        }
+
+        let message = ""
+        message += `지휘관은 홍련이 ${count.toLocaleString()}회 뽑기 만에 나왔네요\n`
+        message += "\n"
+        message += `R: ${r.toLocaleString()}\n`
+        message += `SR: ${sr.toLocaleString()}\n`
+        message += `SSR: ${ssr.toLocaleString()}\n`
+        message += `PILGRIM: ${pilgrim.toLocaleString()}`
+
+        return res.send({
+            code: 0,
+            message: "success",
+            result: message,
+        })
+    } else if (commandList.normalGacha.commands.includes(command)) {
+        switch (commandSplit.length) {
+            case 1:
+                return executeGacha(res, 10, false, null)
+
+            case 2:
+                const count = Number(commandSplit[1])
+
+                return executeGacha(res, count, false, null)
+
+            default:
+                break
+        }
+    } else {
+        // 픽업 가챠 확인
+        for (const pickUpGacha of commandList.pickUpGacha.list) {
+            switch (commandSplit.length) {
+                case 1:
+                    return executeGacha(res, 10, true, pickUpGacha.nikke)
+    
+                case 2:
+                    const count = Number(commandSplit[1])
+    
+                    return executeGacha(res, count, true, pickUpGacha.nikke)
+    
+                default:
+                    break
             }
         }
     }
@@ -107,24 +124,83 @@ const run = async (req, res) => {
 }
 
 /**
- * 10연 뽑기 실행 후 res.send 실행
+ * 뽑기 실행 후 res.send 실행
  * @param {Response} res express response 객체 
+ * @param {number} count 뽑기 횟수
  * @param {boolean} isPickUp 픽업 뽑기 여부
  * @param {Object} pickUpNikke 픽업 대상 니케
  * @returns 결과 문자열
  */
-const executeGacha = (res, isPickUp, pickUpNikke) => {
+const executeGacha = (res, count, isPickUp, pickUpNikke) => {
     const items = []
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < count; i++) {
         items.push(gacha(isPickUp, pickUpNikke))
     }
 
-    res.send({
-        code: 0,
-        message: "success",
-        result: getGachaMessage(items),
-    })
+    if (count > 10) {
+        res.send({
+            code: 0,
+            message: "success",
+            result: getGachaSimpleMessage(items),
+        })
+    } else {
+        res.send({
+            code: 0,
+            message: "success",
+            result: getGachaMessage(items),
+        })
+    }
+}
+
+/**
+ * 
+ * @param {Array} items 
+ */
+const getGachaSimpleMessage = (items) => {
+    let r = 0
+    let sr = 0
+    let ssr = 0
+
+    const nikke = {}
+
+    for (const item of items) {
+        switch (item.rarity) {
+            case "R":
+                r += 1
+                break
+
+            case "SR":
+                sr += 1
+                break
+
+            case "SSR":
+                ssr += 1
+
+                if (nikke[`[${item.nikke.company}] ${item.nikke.name}`] === undefined) {
+                    nikke[`[${item.nikke.company}] ${item.nikke.name}`] = 1
+                } else {
+                    nikke[`[${item.nikke.company}] ${item.nikke.name}`] += 1
+                }
+                break
+
+            default:
+                break
+        }
+    }
+
+    let message = ""
+    message += `${items.length.toLocaleString()}회 뽑기 결과에요 \n`
+    message += `R: ${r.toLocaleString()}\n`
+    message += `SR: ${sr.toLocaleString()}\n`
+    message += `SSR: ${ssr.toLocaleString()}\n`
+    message += "\n"
+
+    for (const key in nikke) {
+        message += `${key} ${nikke[key]} \n`
+    }
+
+    return message.trim()
 }
 
 /**

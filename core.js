@@ -1,10 +1,7 @@
-const http = require("http")
-
 const logger = require('./logger.js')
 
 require('dotenv').config()
 
-const API = "api"
 const LOAD_COMPLETE = "load_complete"
 
 const serverStart = async () => {
