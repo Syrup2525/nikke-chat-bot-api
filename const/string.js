@@ -1,4 +1,4 @@
-const { command } = require('./config.json')
+const { command } = require('../config.json')
 
 const commandList = {
     help: {

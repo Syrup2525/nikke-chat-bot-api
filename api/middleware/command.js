@@ -1,8 +1,8 @@
 const { Request, Response } = require('express')
 const { isBlank, getRandomNumber } = require('../../util/commonUtil.js')
-const { commandList, helpMessage} = require('../../string.js')
+const { commandList, helpMessage} = require('../../const/string.js')
+const percentage = require('../../const/percentage.js')
 const nikke = require('../../model/nikke.js')
-const logger = require('../../logger.js')
 
 /**
  * 
@@ -270,11 +270,9 @@ const gacha = (isPickUp, pickUpNikke) => {
     let rarity = ""
     let nikkes = []
 
-    // 4% SSR
-    if (number <= 40) {
+    if (number <= percentage.SSR) {
         if (isPickUp) {
-            // 2% 픽업
-            if (number <= 20) {
+            if (number <= percentage.PICK_UP) {
                 return {
                     rarity: "SSR",
                     nikke: pickUpNikke,
@@ -282,20 +280,16 @@ const gacha = (isPickUp, pickUpNikke) => {
             }
         }
 
-        // 0.5% 필그림
-        if (number <= 5) {
+        if (number <= percentage.PILGRIM) {
             rarity = "SSR"
             nikkes = nikke.PILGRIM
-        // 3.5% SSR
         } else {
             rarity = "SSR"
             nikkes = nikke.SSR
         }
-    // 43% SR
-    } else if (number <= 470) {
+    } else if (number <= (percentage.SSR + percentage.SR)) {
         rarity = "SR"
         nikkes = nikke.SR
-    // 53% R
     } else {
         rarity = "R"
         nikkes = nikke.R 
