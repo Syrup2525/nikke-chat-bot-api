@@ -41,6 +41,7 @@ const run = async (req, res) => {
         let sr = 0
         let ssr = 0
         let pilgrim = 0
+        let target = 0
 
         while (true) {
             count += 1
@@ -69,7 +70,13 @@ const run = async (req, res) => {
             }
 
             if (item.nikke.name === "홍련") {
-                break
+                target += 1
+
+                if (commandSplit.length == 2 && commandSplit[1] === "풀코강" && target == 11) {
+                    break
+                } else {
+                    break
+                }
             }
         }
 
@@ -138,6 +145,7 @@ const executeGacha = (res, count, isPickUp, pickUpNikke) => {
         items.push(gacha(isPickUp, pickUpNikke))
     }
 
+    // 뽑기 10회 초과시
     if (count > 10) {
         res.send({
             code: 0,
@@ -154,7 +162,7 @@ const executeGacha = (res, count, isPickUp, pickUpNikke) => {
 }
 
 /**
- * 
+ * 뽑기 결과 요약 메시지 출력
  * @param {Array} items 
  */
 const getGachaSimpleMessage = (items) => {
