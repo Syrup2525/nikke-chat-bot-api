@@ -6,12 +6,12 @@ const commandList = {
     },
     normalGacha: {
         type: "normalGacha",
-        description: `일반 10명 모집 시뮬레이션\n${command}일반뽑기 [뽑기횟수] \n(또는 ${command}뽑)`,
+        description: `일반 10명 모집 시뮬레이션\n${command}일반뽑기 [뽑기횟수] \n(또는 ${command}뽑)\n예) !뽑 100`,
         commands: ["일반뽑기", "일뽑", "일", "뽑"],
     },
     pickUpGacha: {
         type: "pickUpGacha",
-        description: `픽업 10명 모집 시뮬레이션\n[메어리 : 베이 갓데스] ${command}수어리 [뽑기횟수]\n[네온 : 블루 오션] ${command}수네온 [뽑기횟수]`,
+        description: `픽업 10명 모집 시뮬레이션\n[메어리 : 베이 갓데스] ${command}수어리 [뽑기횟수]\n[네온 : 블루 오션] ${command}수네온 [뽑기횟수]\n예) !수어리 100`,
         list: [
             {
                 commands: ["수어리"],
