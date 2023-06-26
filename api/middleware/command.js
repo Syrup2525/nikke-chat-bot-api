@@ -143,7 +143,7 @@ const run = async (req, res) => {
     }
 
     res.send({
-        code: 404,
+        code: -404,
         message: "해당하는 명령어가 없습니다."
     })
 }
