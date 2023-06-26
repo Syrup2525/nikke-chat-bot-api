@@ -111,7 +111,10 @@ const run = async (req, res) => {
             case 2:
                 const count = Number(commandSplit[1])
 
-                return executeGacha(res, count, false, null)
+                if (!isNaN(count)) {
+                    return executeGacha(res, count, false, null)
+                }
+                break
 
             default:
                 break
@@ -119,17 +122,22 @@ const run = async (req, res) => {
     } else {
         // 픽업 가챠 확인
         for (const pickUpGacha of commandList.pickUpGacha.list) {
-            switch (commandSplit.length) {
-                case 1:
-                    return executeGacha(res, 10, true, pickUpGacha.nikke)
-    
-                case 2:
-                    const count = Number(commandSplit[1])
-    
-                    return executeGacha(res, count, true, pickUpGacha.nikke)
-    
-                default:
-                    break
+            if (pickUpGacha.commands.includes(command)) {
+                switch (commandSplit.length) {
+                    case 1:
+                        return executeGacha(res, 10, true, pickUpGacha.nikke)
+        
+                    case 2:
+                        const count = Number(commandSplit[1])
+
+                        if (!isNaN(count)) {
+                            return executeGacha(res, count, true, pickUpGacha.nikke)
+                        }
+                        break
+        
+                    default:
+                        break
+                }
             }
         }
     }
