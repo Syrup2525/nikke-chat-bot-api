@@ -35,7 +35,7 @@ const run = async (req, res) => {
             result: helpMessage,
         })
     } else if (command === "홍련") {
-        const isFullCore = commandSplit.length == 2 && commandSplit[1] === "풀코강"
+        const isFullCore = commandSplit.length == 2 && ["풀코강", "풀돌", "풀코", "풀코돌"].includes(commandSplit[1])
 
         let count = 0
 
