@@ -96,7 +96,10 @@ const run = async (req, res) => {
         message += `R: ${r.toLocaleString()}\n`
         message += `SR: ${sr.toLocaleString()}\n`
         message += `SSR: ${ssr.toLocaleString()}\n`
-        message += `PILGRIM: ${pilgrim.toLocaleString()}`
+        message += `PILGRIM: ${pilgrim.toLocaleString()}]\n`
+        message += `\n`
+        message += `사용된 재화: ${(count * 300).toLocaleString()}쥬얼 / 약 ${(getRealMoney(count)).toLocaleString()}만원\n`
+        message += `(10뽑당 6만원으로 계산했어요)`
 
         return res.send({
             code: 0,
@@ -307,6 +310,15 @@ const gacha = (isPickUp, pickUpNikke) => {
         rarity: rarity,
         nikke: nikkes[getRandomNumber(0, nikkes.length - 1)],
     }
+}
+
+/**
+ * 실제 돈으로 환산
+ * @param {number} gachaCount 뽑기 횟수
+ * @returns 
+ */
+const getRealMoney = (gachaCount) => {
+    return Math.round(gachaCount * 6000 / 10000)
 }
 
 module.exports = {
