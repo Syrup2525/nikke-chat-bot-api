@@ -96,7 +96,7 @@ const run = async (req, res) => {
         message += `R: ${r.toLocaleString()}\n`
         message += `SR: ${sr.toLocaleString()}\n`
         message += `SSR: ${ssr.toLocaleString()}\n`
-        message += `PILGRIM: ${pilgrim.toLocaleString()}]\n`
+        message += `PILGRIM: ${pilgrim.toLocaleString()}\n`
         message += `\n`
         message += `사용된 재화: ${(count * 300).toLocaleString()}쥬얼 / 약 ${(getRealMoney(count)).toLocaleString()}만원\n`
         message += `(10뽑당 6만원으로 계산했어요)`
