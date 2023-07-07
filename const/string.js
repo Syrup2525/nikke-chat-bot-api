@@ -11,22 +11,15 @@ const commandList = {
     },
     pickUpGacha: {
         type: "pickUpGacha",
-        description: `픽업 10명 모집 시뮬레이션\n[메어리 : 베이 갓데스] ${command}수어리 [뽑기횟수]\n[네온 : 블루 오션] ${command}수네온 [뽑기횟수]\n예) !수어리 100`,
+        description: `픽업 10명 모집 시뮬레이션\n${command}네로 [뽑기횟수]\n예) !네로 100`,
         list: [
             {
-                commands: ["수어리"],
+                commands: ["네로"],
                 nikke: {
                     company: "TETRA",
-                    name: "메어리 : 베이 갓데스",
+                    name: "네로",
                 },
             },
-            {
-                commands: ["수네온"],
-                nikke: {
-                    company: "ELYSION",
-                    name: "네온 : 블루 오션",
-                },
-            }
         ]
     }
 }
