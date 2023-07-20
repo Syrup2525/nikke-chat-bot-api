@@ -14,10 +14,10 @@ const commandList = {
         description: `픽업 10명 모집 시뮬레이션\n${command}네로 [뽑기횟수]\n예) !네로 100`,
         list: [
             {
-                commands: ["네로"],
+                commands: ["마스트", "센쵸"],
                 nikke: {
-                    company: "TETRA",
-                    name: "네로",
+                    company: "ELYSION",
+                    name: "마스트",
                 },
             },
         ]

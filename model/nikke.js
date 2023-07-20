@@ -290,6 +290,10 @@ module.exports = {
             company: TETRA,
             name: "로산나",
         },
+        {
+            company: TETRA,
+            name: "네로",
+        },
     ],
     PILGRIM: [
         {
