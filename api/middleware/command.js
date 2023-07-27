@@ -1,6 +1,6 @@
 const { Request, Response } = require('express')
 const { isBlank, getRandomNumber } = require('../../util/commonUtil.js')
-const { commandList, helpMessage} = require('../../const/string.js')
+const { normalCommands, gachaCommands } = require('../../const/define.js')
 const percentage = require('../../const/percentage.js')
 const nikke = require('../../model/nikke.js')
 
@@ -28,13 +28,52 @@ const run = async (req, res) => {
 
     command = commandSplit[0]
 
-    if (commandList.help.commands.includes(command)) {
-        return res.send({
-            code: 0,
-            message: "success",
-            result: helpMessage,
-        })
-    } else if (command === "홍련") {
+    // 일반 명령어
+    for (const normalCommand of normalCommands) {
+        if (normalCommand.commands.includes(command)) {
+            return res.send({
+                code: 0,
+                message: "success",
+                result: normalCommand.message,
+            })
+        }
+    }
+
+    // 뽑기 명령어
+    for (const gachaCommand of gachaCommands) {
+        for (const item of gachaCommand.list) {
+            if (item.commands.includes(command)) {
+                // 통상 뽑기 기본 세팅
+                let isPickUp = false
+                let pickUpNikke = null
+                
+                // 픽업 뽑기인 경우
+                if (item.nikke !== null) {
+                    isPickUp = true
+                    pickUpNikke = item.nikke
+                }
+
+                switch (commandSplit.length) {
+                    case 1:
+                        return executeGacha(res, 10, isPickUp, pickUpNikke)
+        
+                    case 2:
+                        const count = Number(commandSplit[1])
+
+                        if (!isNaN(count)) {
+                            return executeGacha(res, count, isPickUp, pickUpNikke)
+                        }
+                        break
+        
+                    default:
+                        break
+                }
+            }
+        }
+    }
+
+    // 기타 정의되지 않은 특수 명령어
+    if (command === "홍련") {
         const isFullCore = commandSplit.length == 2 && ["풀코강", "풀돌", "풀코", "풀코돌"].includes(commandSplit[1])
 
         let count = 0
@@ -106,44 +145,7 @@ const run = async (req, res) => {
             message: "success",
             result: message,
         })
-    } else if (commandList.normalGacha.commands.includes(command)) {
-        switch (commandSplit.length) {
-            case 1:
-                return executeGacha(res, 10, false, null)
-
-            case 2:
-                const count = Number(commandSplit[1])
-
-                if (!isNaN(count)) {
-                    return executeGacha(res, count, false, null)
-                }
-                break
-
-            default:
-                break
-        }
-    } else {
-        // 픽업 가챠 확인
-        for (const pickUpGacha of commandList.pickUpGacha.list) {
-            if (pickUpGacha.commands.includes(command)) {
-                switch (commandSplit.length) {
-                    case 1:
-                        return executeGacha(res, 10, true, pickUpGacha.nikke)
-        
-                    case 2:
-                        const count = Number(commandSplit[1])
-
-                        if (!isNaN(count)) {
-                            return executeGacha(res, count, true, pickUpGacha.nikke)
-                        }
-                        break
-        
-                    default:
-                        break
-                }
-            }
-        }
-    }
+    } 
 
     res.send({
         code: -404,
