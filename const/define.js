@@ -44,8 +44,8 @@ const helpMessage = () => {
 
 const noticeMessage = () => {
     let message = ""
-    message += "지휘관. 채팅방 공지를 알려 드릴게요. \n" 
-    message + "\n"
+    message += "지휘관, 채팅방 공지를 알려 드릴게요. \n" 
+    message += "\n"
     message += "1. 반말하지 말기, 형, 누나, 언니 등 호칭 금지 \n"
     message += "2. 기본 매너와 예의를 지킬 것 \n"
     message += "3. 정치, 종교 발언 금지 \n"
