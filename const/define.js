@@ -13,7 +13,9 @@ const gachaCommands = [
     },
     {
         type: "pickUp",
-        description: `픽업 10명 모집 시뮬레이션\n${command}네로 [뽑기횟수]\n예) !네로 100`,
+        description: `픽업 10명 모집 시뮬레이션\n`
+                    + `${command}네로 [뽑기횟수]\n`
+                    + `예) !네로 100`,
         list: [
             {
                 commands: ["마스트", "센쵸"],
