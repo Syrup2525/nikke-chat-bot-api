@@ -1,22 +1,5 @@
 const { command } = require('../config.json')
 
-
-const noticeMessage = () => {
-    let message = ""
-    message += "지휘관. 채팅방 공지를 알려 드릴게요. \n" 
-    message + "\n"
-    message += "1. 반말하지 말기, 형, 누나, 언니 등 호칭 금지 \n"
-    message += "2. 기본 매너와 예의를 지킬 것 \n"
-    message += "3. 정치, 종교 발언 금지 \n"
-    message += "4. 도배, 광고 금지 \n"
-    message += "5. 심한 욕설, 성드립, 뇌절, 분탕 및 선넘는 발언, 분위기를 흐리는 언행 금지 \n"
-    message += "6. 매너 채팅 부탁드려요 \n"
-    message += "\n"
-    message += "공지 숙지 이후 닉네임을 인게임 이름으로 변경해주세요."
-
-    return noticeMessage
-}
-
 const gachaCommands = [
     {
         type: "normal",
@@ -57,6 +40,22 @@ const helpMessage = () => {
     }
 
     return message.trim()
+}
+
+const noticeMessage = () => {
+    let message = ""
+    message += "지휘관. 채팅방 공지를 알려 드릴게요. \n" 
+    message + "\n"
+    message += "1. 반말하지 말기, 형, 누나, 언니 등 호칭 금지 \n"
+    message += "2. 기본 매너와 예의를 지킬 것 \n"
+    message += "3. 정치, 종교 발언 금지 \n"
+    message += "4. 도배, 광고 금지 \n"
+    message += "5. 심한 욕설, 성드립, 뇌절, 분탕 및 선넘는 발언, 분위기를 흐리는 언행 금지 \n"
+    message += "6. 매너 채팅 부탁드려요 \n"
+    message += "\n"
+    message += "공지 숙지 이후 닉네임을 인게임 이름으로 변경해주세요."
+
+    return message
 }
 
 const normalCommands = [
