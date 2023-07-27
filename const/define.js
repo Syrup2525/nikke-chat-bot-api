@@ -1,20 +1,5 @@
 const { command } = require('../config.json')
 
-const helpMessage = () => {
-    let message = ""
-    message += "< 사용 가능한 명령어 리스트 >\n"
-    message += "\n"
-    message += "사용 방법 \n"
-    message += "- 띄어쓰기에 유의하여 주세요. \n"
-    message += "- [] 표시는 선택 사항이에요. \n"
-    message += "\n"
-
-    for (const gachaCommand of gachaCommands) {
-        message += `▶ ${gachaCommand.description} \n`
-    }
-
-    return message.trim()
-}
 
 const noticeMessage = () => {
     let message = ""
@@ -31,19 +16,6 @@ const noticeMessage = () => {
 
     return noticeMessage
 }
-
-const normalCommands = [
-    {
-        type: "help",
-        commands: ["명령어"],
-        message: helpMessage(),
-    },
-    {
-        type: "notice",
-        commands: ["공지"],
-        message: noticeMessage(),
-    },
-]
 
 const gachaCommands = [
     {
@@ -69,6 +41,35 @@ const gachaCommands = [
             },
         ]
     }
+]
+
+const helpMessage = () => {
+    let message = ""
+    message += "< 사용 가능한 명령어 리스트 >\n"
+    message += "\n"
+    message += "사용 방법 \n"
+    message += "- 띄어쓰기에 유의하여 주세요. \n"
+    message += "- [] 표시는 선택 사항이에요. \n"
+    message += "\n"
+
+    for (const gachaCommand of gachaCommands) {
+        message += `▶ ${gachaCommand.description} \n`
+    }
+
+    return message.trim()
+}
+
+const normalCommands = [
+    {
+        type: "help",
+        commands: ["명령어"],
+        message: helpMessage(),
+    },
+    {
+        type: "notice",
+        commands: ["공지"],
+        message: noticeMessage(),
+    },
 ]
 
 module.exports = {
