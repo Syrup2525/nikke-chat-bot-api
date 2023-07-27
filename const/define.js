@@ -8,11 +8,12 @@ const helpMessage = () => {
     message += "- 띄어쓰기에 유의하여 주세요. \n"
     message += "- [] 표시는 선택 사항이에요. \n"
     message += "\n"
-    message += `▶ ${commandList.normalGacha.description} \n`
-    message += "\n"
-    message += `▶ ${commandList.pickUpGacha.description}`
 
-    return message
+    for (const gachaCommand of gachaCommands) {
+        message += `▶ ${gachaCommand.description} \n`
+    }
+
+    return message.trim()
 }
 
 const noticeMessage = () => {
