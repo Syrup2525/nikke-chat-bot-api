@@ -52,6 +52,7 @@ const noticeMessage = () => {
     message += "지휘관, 채팅방 공지를 알려 드릴게요. \n" 
     message += "\n"
     message += "◆ (필독) 경고 없이 추방될 수 있습니다. \n"
+    message += "\n"
     message += "- 반말하지 말기, 서로간 형, 누나, 언니 등의 호칭 및 실명언급 금지 \n"
     message += "- 기본 매너와 예의를 지킬 것 \n"
     message += "- 가급적 니케 관련된 이야기만 할 것 \n"
