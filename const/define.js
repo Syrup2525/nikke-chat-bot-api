@@ -5,7 +5,8 @@ const gachaCommands = [
         type: "normal",
         description: `일반 10명 모집 시뮬레이션 \n`
                     + `${command}일반뽑기 [뽑기횟수] \n`
-                    + `(또는 ${command}뽑)\n예) !뽑 100`,
+                    + `(또는 ${command}뽑)\n `
+                    + `예) !뽑 또는 !뽑 100`,
         list: [
             {
                 commands: ["일반뽑기", "일뽑", "일", "뽑"],
@@ -17,7 +18,7 @@ const gachaCommands = [
         type: "pickUp",
         description: `픽업 10명 모집 시뮬레이션\n`
                     + `${command}네로 [뽑기횟수]\n`
-                    + `예) !네로 100`,
+                    + `예) !마스트 또는 !마스트 100`,
         list: [
             {
                 commands: ["마스트", "센쵸"],
