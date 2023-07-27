@@ -49,7 +49,7 @@ const helpMessage = () => {
 
 const noticeMessage = () => {
     let message = ""
-    message += "@아스트로넛 지휘관, 채팅방 공지를 알려 드릴게요. \n" 
+    message += "지휘관, 채팅방 공지를 알려 드릴게요. \n" 
     message += "\n"
     message += "◆ (필독) 경고 없이 추방될 수 있습니다. \n"
     message += "\n"
