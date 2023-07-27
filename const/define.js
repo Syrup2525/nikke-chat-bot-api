@@ -62,6 +62,8 @@ const noticeMessage = () => {
     message += "- 🚫 불법촬영물, 🔞창작물 등 카카오 오픈채팅방 정책 위반 행위 \n"
     message += "- 🚫 과도한 시프티 명령어 사용 \n"
     message += "\n"
+    message += "🏷️ 미접으로 유니온에서 추방될 경우 오픈채팅방에서도 추방됩니다.\n"
+    message += "\n"
     message += "◆ 공지 숙지 이후 닉네임을 인게임 이름으로 변경해주세요."
 
     return message
