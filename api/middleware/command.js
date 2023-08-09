@@ -74,77 +74,59 @@ const run = async (req, res) => {
 
     // 기타 정의되지 않은 특수 명령어
     if (command === "홍련") {
-        const isFullCore = commandSplit.length == 2 && ["풀코강", "풀돌", "풀코", "풀코돌"].includes(commandSplit[1])
+        const validCommands = ["풀코강", "풀돌", "풀코", "풀코돌"]
+        const commandOption = commandSplit[1]
 
-        let count = 0
+        if (!commandOption || validCommands.includes(commandOption)) {
+            const isFullCore = validCommands.includes(commandOption)
 
-        let r = 0
-        let sr = 0
-        let ssr = 0
-        let pilgrim = 0
-        let target = 0
-
-        while (true) {
-            count += 1
-
-            const item = gacha(false)
-
-            switch (item.rarity) {
-                case "R":
-                    r += 1
-                    break
-
-                case "SR":
-                    sr += 1
-                    break
-
-                case "SSR":
-                    ssr += 1
-                    break
-
-                default:
-                    break
-            }
-
-            if (item.nikke.company === "PILGRIM") {
-                pilgrim += 1
-            }
-
-            if (item.nikke.name === "홍련") {
-                target += 1
-
-                if (isFullCore) {
-                    if (target == 11) {
+            let count = 0
+            let r = 0, sr = 0, ssr = 0, pilgrim = 0, target = 0
+    
+            while (true) {
+                count += 1
+                const item = gacha(false)
+    
+                if (["R", "SR", "SSR"].includes(item.rarity)) {
+                    eval(`${item.rarity.toLowerCase()} += 1`)
+                }
+    
+                if (item.nikke.company === "PILGRIM") {
+                    pilgrim += 1
+                }
+    
+                if (item.nikke.name === "홍련") {
+                    target += 1
+    
+                    if (isFullCore ? target === 11 : true) {
                         break
                     }
-                } else {
-                    break
                 }
             }
+
+            let message = ""
+
+            if (isFullCore) {
+                message += `지휘관은 홍련이 ${count.toLocaleString()}회 뽑기 만에 풀코강에 성공했어요.\n`
+            } else {
+                message += `지휘관은 홍련이 ${count.toLocaleString()}회 뽑기 만에 나왔네요\n`
+            }
+
+            message += "\n"
+            message += `R: ${r.toLocaleString()}\n`
+            message += `SR: ${sr.toLocaleString()}\n`
+            message += `SSR: ${ssr.toLocaleString()}\n`
+            message += `PILGRIM: ${pilgrim.toLocaleString()}\n`
+            message += `\n`
+            message += `사용된 재화: ${(count * 300).toLocaleString()}쥬얼 / 약 ${(getRealMoney(count)).toLocaleString()}만원\n`
+            message += `(10뽑당 6만원으로 계산했어요)`
+
+            return res.send({
+                code: 0,
+                message: "success",
+                result: message,
+            })
         }
-
-        let message = ""
-
-        if (isFullCore) {
-            message += `지휘관은 홍련이 ${count.toLocaleString()}회 뽑기 만에 풀코강에 성공했어요.\n`
-        } else {
-            message += `지휘관은 홍련이 ${count.toLocaleString()}회 뽑기 만에 나왔네요\n`
-        }
-
-        message += "\n"
-        message += `R: ${r.toLocaleString()}\n`
-        message += `SR: ${sr.toLocaleString()}\n`
-        message += `SSR: ${ssr.toLocaleString()}\n`
-        message += `PILGRIM: ${pilgrim.toLocaleString()}\n`
-        message += `\n`
-        message += `사용된 재화: ${(count * 300).toLocaleString()}쥬얼 / 약 ${(getRealMoney(count)).toLocaleString()}만원\n`
-        message += `(10뽑당 6만원으로 계산했어요)`
-
-        return res.send({
-            code: 0,
-            message: "success",
-            result: message,
-        })
     } 
 
     res.send({

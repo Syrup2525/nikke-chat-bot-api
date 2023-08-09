@@ -144,6 +144,10 @@ module.exports = {
             company: ELYSION,
             name: "D",
         },
+        {
+            company: "ELYSION",
+            name: "마스트",
+        },
         // MISSILIS
         {
             company: MISSILIS,

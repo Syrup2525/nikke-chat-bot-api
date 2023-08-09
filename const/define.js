@@ -3,7 +3,7 @@ const { command } = require('../config.json')
 const gachaCommands = [
     {
         type: "normal",
-        description: `일반 10명 모집 시뮬레이션 \n`
+        description: `일반 모집 시뮬레이션 \n`
                     + `${command}일반뽑기 [뽑기횟수] \n`
                     + `(또는 ${command}뽑)\n `
                     + `예) "!뽑" 또는 "!뽑 100"`,
@@ -16,15 +16,22 @@ const gachaCommands = [
     },
     {
         type: "pickUp",
-        description: `픽업 10명 모집 시뮬레이션\n`
+        description: `픽업 모집 시뮬레이션\n`
                     + `${command}네로 [뽑기횟수]\n`
-                    + `예) "!마스트" 또는 "!마스트 100"`,
+                    + `예) "!수니스" 또는 "!수니스 100"`,
         list: [
             {
-                commands: ["마스트", "센쵸"],
+                commands: ["수니스"],
+                nikke: {
+                    company: "TETRA",
+                    name: "아니스 : 스파클링 서머",
+                },
+            },
+            {
+                commands: ["수헬름"],
                 nikke: {
                     company: "ELYSION",
-                    name: "마스트",
+                    name: "헬름 : 아쿠아마린",
                 },
             },
         ]
