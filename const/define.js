@@ -17,23 +17,30 @@ const gachaCommands = [
     {
         type: "pickUp",
         description: `픽업 모집 시뮬레이션\n`
-                    + `${command}네로 [뽑기횟수]\n`
-                    + `예) "!수니스" 또는 "!수니스 100"`,
+                    + `${command}레드후드 [뽑기횟수]\n`
+                    + `예) "!레후" 또는 "!레드후드 100"`,
         list: [
             {
-                commands: ["수니스"],
+                commands: ["레후", "레드후드"],
                 nikke: {
-                    company: "TETRA",
-                    name: "아니스 : 스파클링 서머",
+                    company: "PILGRIM",
+                    name: "레드 후드",
                 },
             },
-            {
-                commands: ["수헬름"],
-                nikke: {
-                    company: "ELYSION",
-                    name: "헬름 : 아쿠아마린",
-                },
-            },
+            // {
+            //     commands: ["수니스"],
+            //     nikke: {
+            //         company: "TETRA",
+            //         name: "아니스 : 스파클링 서머",
+            //     },
+            // },
+            // {
+            //     commands: ["수헬름"],
+            //     nikke: {
+            //         company: "ELYSION",
+            //         name: "헬름 : 아쿠아마린",
+            //     },
+            // },
         ]
     }
 ]

@@ -145,8 +145,12 @@ module.exports = {
             name: "D",
         },
         {
-            company: "ELYSION",
+            company: ELYSION,
             name: "마스트",
+        },
+        {
+            company: ELYSION,
+            name: "키리",
         },
         // MISSILIS
         {
@@ -196,6 +200,14 @@ module.exports = {
         {
             company: MISSILIS,
             name: "자칼",
+        },
+        {
+            company: MISSILIS,
+            name: "나가",
+        },
+        {
+            company: MISSILIS,
+            name: "티아",
         },
         // TETRA
         {
