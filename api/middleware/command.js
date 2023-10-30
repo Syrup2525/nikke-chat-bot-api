@@ -3,6 +3,7 @@ const { isBlank, getRandomNumber } = require('../../util/commonUtil.js')
 const { normalCommands, gachaCommands } = require('../../const/define.js')
 const percentage = require('../../const/percentage.js')
 const nikke = require('../../model/nikke.js')
+const logger = require('../../logger.js')
 
 /**
  * 
@@ -264,6 +265,8 @@ const gacha = (isPickUp, pickUpNikke) => {
 
     let rarity = ""
     let nikkes = []
+
+    logger.debug(`number: ${number}`)
 
     if (number <= percentage.SSR) {
         if (isPickUp) {
