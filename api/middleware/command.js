@@ -276,10 +276,6 @@ const gacha = (isPickUp, pickUpNikke) => {
             }
         }
 
-        if (number >= 10 && number <= 15) {
-            logger.debug(number)
-        }
-
         if (number <= percentage.PILGRIM + (isPickUp ? percentage.PICK_UP : 0)) {
             rarity = "SSR"
             nikkes = nikke.PILGRIM
