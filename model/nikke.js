@@ -152,6 +152,10 @@ module.exports = {
             company: ELYSION,
             name: "키리",
         },
+        {
+            company: ELYSION,
+            name: "마르차나",
+        },
         // MISSILIS
         {
             company: MISSILIS,
