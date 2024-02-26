@@ -268,7 +268,13 @@ const gacha = (isPickUp, pickUpNikke) => {
 
     if (number <= percentage.SSR) {
         if (isPickUp) {
-            if (number <= percentage.PICK_UP) {
+            let pickUpPercentage = percentage.PICK_UP
+
+            if (pickUpNikke.company === "PILGRIM") {
+                pickUpPercentage = percentage.PILGRIM_PICK_UP
+            }
+
+            if (number <= pickUpPercentage) {
                 return {
                     rarity: "SSR",
                     nikke: pickUpNikke,

@@ -213,6 +213,14 @@ module.exports = {
             company: MISSILIS,
             name: "티아",
         },
+        {
+            company: MISSILIS,
+            name: "토브",
+        },
+        {
+            company: MISSILIS,
+            name: "일레그",
+        },
         // TETRA
         {
             company: TETRA,
@@ -314,6 +322,22 @@ module.exports = {
             company: TETRA,
             name: "네로",
         },
+        {
+            company: TETRA,
+            name: "레오나",
+        },
+        {
+            company: TETRA,
+            name: "목단",
+        },
+        {
+            company: TETRA,
+            name: "프리바티 : 언카인드 메이드",
+        },
+        {
+            company: TETRA,
+            name: "에이드",
+        },
     ],
     PILGRIM: [
         {
@@ -347,6 +371,14 @@ module.exports = {
         {
             company: PILGRIM,
             name: "도로시",
+        },
+        {
+            company: PILGRIM,
+            name: "레드 후드",
+        },
+        {
+            company: PILGRIM,
+            name: "홍련 : 흑영",
         },
     ],
 }

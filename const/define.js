@@ -17,14 +17,14 @@ const gachaCommands = [
     {
         type: "pickUp",
         description: `픽업 모집 시뮬레이션\n`
-                    + `${command}레드후드 [뽑기횟수]\n`
-                    + `예) "!레후" 또는 "!레드후드 100"`,
+                    + `${command}일레그 [뽑기횟수]\n`
+                    + `예) "!일레그" 또는 "!일레그 100"`,
         list: [
             {
-                commands: ["레후", "레드후드"],
+                commands: ["일레그"],
                 nikke: {
-                    company: "PILGRIM",
-                    name: "레드 후드",
+                    company: "MISSILIS",
+                    name: "일레그",
                 },
             },
             // {
