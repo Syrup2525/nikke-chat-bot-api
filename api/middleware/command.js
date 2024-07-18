@@ -74,7 +74,7 @@ const run = async (req, res) => {
     }
 
     // 기타 정의되지 않은 특수 명령어
-    if (command === "홍련") {
+    if (command === "홍련" || command === "홍북" || command === "홍북이") {
         const validCommands = ["풀코강", "풀돌", "풀코", "풀코돌"]
         const commandOption = commandSplit[1]
 
