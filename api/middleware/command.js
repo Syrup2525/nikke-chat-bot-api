@@ -25,6 +25,21 @@ const run = async (req, res) => {
         })
     }
 
+    if (command === "") {
+        return res.status(400).send({
+            message: "command 는 1개 이상이여야 합니다."
+        })
+    }
+
+    // ! 로 시작하지 않는 특수 명령어
+    if (command.match(/[가-힣]/g).join('').includes("내가레드후드보단좋지")) {
+        return res.send({
+            code: 0,
+            message: "success",
+            result: "내가 모더니아 보단 낫지 ~ ♫",
+        })
+    }
+
     const commandSplit = command.split(" ")
 
     command = commandSplit[0]
@@ -236,7 +251,7 @@ const run = async (req, res) => {
                 result: message,
             })
         }
-    }
+    } 
 
     res.send({
         code: -404,
