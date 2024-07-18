@@ -35,7 +35,7 @@ const run = async (req, res) => {
 
     // ! 로 시작하지 않는 특수 명령어
     if (matchResult !== null) {
-        if (matchResult.join('').includes("내가레드후드보다좋지")) {
+        if (matchResult.join('').includes("내가레드후드보단좋지")) {
             return res.send({
                 code: 0,
                 message: "success",
