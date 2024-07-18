@@ -14,19 +14,19 @@ const gachaCommands = [
             },
         ]
     },
-    {
-        type: "pickUp",
-        description: `픽업 모집 시뮬레이션\n`
-                    + `${command}일레그 [뽑기횟수]\n`
-                    + `예) "!일레그" 또는 "!일레그 100"`,
-        list: [
-            {
-                commands: ["일레그"],
-                nikke: {
-                    company: "MISSILIS",
-                    name: "일레그",
-                },
-            },
+    // {
+    //     type: "pickUp",
+    //     description: `픽업 모집 시뮬레이션\n`
+    //                 + `${command}일레그 [뽑기횟수]\n`
+    //                 + `예) "!일레그" 또는 "!일레그 100"`,
+    //     list: [
+            // {
+            //     commands: ["일레그"],
+            //     nikke: {
+            //         company: "MISSILIS",
+            //         name: "일레그",
+            //     },
+            // },
             // {
             //     commands: ["수니스"],
             //     nikke: {
@@ -41,8 +41,8 @@ const gachaCommands = [
             //         name: "헬름 : 아쿠아마린",
             //     },
             // },
-        ]
-    }
+        // ]
+    // }
 ]
 
 const helpMessage = () => {

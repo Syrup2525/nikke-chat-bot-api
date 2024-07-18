@@ -156,6 +156,10 @@ module.exports = {
             company: ELYSION,
             name: "마르차나",
         },
+        {
+            company: ELYSION,
+            name: "D : 킬러 와이프",
+        },
         // MISSILIS
         {
             company: MISSILIS,
@@ -220,6 +224,10 @@ module.exports = {
         {
             company: MISSILIS,
             name: "일레그",
+        },
+        {
+            company: MISSILIS,
+            name: "트로니",
         },
         // TETRA
         {
@@ -338,6 +346,22 @@ module.exports = {
             company: TETRA,
             name: "에이드",
         },
+        {
+            company: TETRA,
+            name: "베이",
+        },
+        {
+            company: TETRA,
+            name: "소다 : 트윙클링 바니",
+        },
+        {
+            company: TETRA,
+            name: "앨리스 : 원더랜드 바니",
+        },
+        {
+            company: TETRA,
+            name: "클레이",
+        },
     ],
     PILGRIM: [
         {
@@ -379,6 +403,10 @@ module.exports = {
         {
             company: PILGRIM,
             name: "홍련 : 흑영",
+        },
+        {
+            company: PILGRIM,
+            name: "크라운",
         },
     ],
 }
