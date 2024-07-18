@@ -31,12 +31,23 @@ const run = async (req, res) => {
         })
     }
 
+    const matchResult = command.match(/[가-힣]/g)
+
     // ! 로 시작하지 않는 특수 명령어
-    if (command.match(/[가-힣]/g).join('').includes("내가레드후드보단좋지")) {
+    if (matchResult !== null) {
+        if (matchResult.join('').includes("내가레드후드보다좋지")) {
+            return res.send({
+                code: 0,
+                message: "success",
+                result: "내가 모더니아 보단 낫지 ~ ♫",
+            })
+        }
+    }
+
+    if (!command.startsWith("!") || command.replaceAll("!", "") === "") {
         return res.send({
-            code: 0,
-            message: "success",
-            result: "내가 모더니아 보단 낫지 ~ ♫",
+            code: 400,
+            message: "Not Vaild Command",
         })
     }
 
