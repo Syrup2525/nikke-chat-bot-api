@@ -51,7 +51,7 @@ const run = async (req, res) => {
         })
     }
 
-    const commandSplit = command.split(" ")
+    const commandSplit = command.replaceAll("!", "").split(" ")
 
     command = commandSplit[0]
 
